@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ファイルアップロード</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link th:href="@{/bootstrap/css/bootstrap.css}" href="../static/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link th:href="@{/bootstrap/css/bootstrap-theme.css}" href="../static/bootstrap/css/bootstrap-theme.css"
+          rel="stylesheet"/>
+    <link th:href="@{/sweetalert/css/sweetalert.css}" href="../static/sweetalert/css/sweetalert.css"
+          rel="stylesheet"/>
+    <script th:src="@{/script/jquery-3.1.1.min.js}" src="../static/bootstrap/scripts/jquery-3.1.1.min.js"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.js}" src="../static/bootstrap/js/bootstrap.js"></script>
+    <script th:src="@{/sweetalert/js/sweetalert-dev.js}" src="../static/sweetalert/js/sweetalert-dev.js"></script>
+    
+    <script th:inline="javascript">
+    /*<![CDATA[*/  
+    function _s() { 
+    			 var s = document.getElementById("filetype");
+    	         var f = document.getElementById("f").files;
+    	         if(f[0] == null){
+    	        	 swal("ファイルを選択してください。");
+    	        	 return false;
+    	         }else{    
+	    	         if(((s.value == 1) && (f[0].name.indexOf("案件振り返り") == -1)) || ((s.value == 2) && (f[0].name.indexOf("案件管理一覧") == -1))){
+	    	        	 swal("ファイルタイプは不正です。");
+	    	        	 return false;
+	    	         } 	
+    	         }         
+    	     }
+    /*]]>*/
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+        	<div class="col-md-12">
+        		<div class="text-right">
+            		<h5><small>Ver1.0</small></h5>
+            	</div>	
+            	<div class="panel panel-primary">
+                	<div class="panel-heading text-center">
+                		<span class="panel-title">ファイルアップロード</span>
+                	</div>
+                	<div class="panel-body">
+                		<form action="/importExcel" method="POST" enctype="multipart/form-data">
+	                		<label class="col-xs-4 control-label">ファイルタイプ:</label>  
+					        <div class="col-xs-5 selectContainer">  
+					            <select id="filetype" name="filetype" class="form-control">  
+					                <option th:value="1">案件振り返り</option>
+				        			<option th:value="2">案件管理一覧</option> 
+					            </select>  
+					        </div><br><br>
+					        <input class="form-control" type="file" name="file" id="f"><br>
+					        <input class="btn btn-primary" type="submit" value="EXCELアップロード" onclick="javascript: return _s()">
+					    </form><br>
+				    </div>	
+                </div>
+            </div>
+        </div>	    
+    </div>   
+</body>
+
+</html>

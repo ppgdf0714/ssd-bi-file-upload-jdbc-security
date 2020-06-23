@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>アップロード成功</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link th:href="@{/bootstrap/css/bootstrap.css}" href="../static/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link th:href="@{/bootstrap/css/bootstrap-theme.css}" href="../static/bootstrap/css/bootstrap-theme.css"
+          rel="stylesheet"/>
+    <script th:src="@{/script/jquery-3.1.1.min.js}" src="../static/scripts/jquery-3.1.1.min.js"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.js}" src="../static/bootstrap/js/bootstrap.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+        	<div class="col-md-12">
+        	    <div class="text-right">
+            		<h5><small>Ver1.0</small></h5>
+            	</div>	
+            	<div class="panel panel-primary">
+                	<div class="panel-heading text-center">
+                		<span class="panel-title">ファイルアップロード</span>
+                	</div>
+                	<div class="panel-body">
+                		<label class="col-xs-5 control-label">アップロード完了</label><br>	 
+                		<form action="/index" method="POST" enctype="multipart/form-data">
+					        <input class="btn btn-primary" type="submit" value="トップへ">
+					    </form><br>
+				    </div>	
+                </div>
+            </div>
+        </div>	    
+    </div>   
+</body>
+</html>
